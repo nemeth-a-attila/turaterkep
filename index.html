@@ -61,14 +61,14 @@ async function loadTracks() {
             continue;
         }
 
-        const gpx = new L.GPX(file.download_url, {
-            async: true,
-            marker_options: {
-                startIconUrl: null,
-                endIconUrl: null,
-                shadowUrl: null
-            }
-        });
+const gpx = new L.GPX(file.download_url, {
+    async: true,
+    marker_options: {
+        startIconUrl: '',
+        endIconUrl: '',
+        shadowUrl: ''
+    }
+});
 
         gpx.on('loaded', function(e) {
 
