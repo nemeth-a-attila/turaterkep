@@ -63,10 +63,10 @@ async function loadTracks() {
 
 const gpx = new L.GPX(file.download_url, {
     async: true,
-    marker_options: {
-        startIconUrl: '',
-        endIconUrl: '',
-        shadowUrl: ''
+    markers: {
+        startIcon: null,
+        endIcon: null,
+        wptIcons: {}
     }
 });
 
