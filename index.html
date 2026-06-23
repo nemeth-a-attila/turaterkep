@@ -48,7 +48,7 @@ const bounds = L.latLngBounds();
 async function loadTracks() {
 
     const response = await fetch(
-        'https://api.github.com/repos/nemeth-a-attila/turaterkep/contents/gpx'
+        'https://api.github.com/repos/nemeth-a-attila/turaterkep/contents/gpx/tervezett'
     );
 
     const files = await response.json();
