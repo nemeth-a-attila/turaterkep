@@ -58,6 +58,13 @@ async function buildLayerTree(map) {
             `gpx/tervezett/${filename}`,
             {
                 async: true,
+
+                polyline_options: {
+                    color: '#0066ff',
+                    weight: 4,
+                    opacity: 0.8
+                },
+
                 markers: {
                     startIcon: null,
                     endIcon: null,
@@ -88,6 +95,13 @@ async function buildLayerTree(map) {
                 `gpx/teljesitett/${movementName}/${filename}`,
                 {
                     async: true,
+
+                    polyline_options: {
+                        color: '#ff0000',
+                        weight: 5,
+                        opacity: 0.9
+                    },
+
                     markers: {
                         startIcon: null,
                         endIcon: null,
