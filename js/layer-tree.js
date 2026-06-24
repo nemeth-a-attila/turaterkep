@@ -98,6 +98,7 @@ async function buildLayerTree(map) {
 
         completedChildren.push({
             label: movementName,
+            selectAllCheckbox: true,
             children: trackNodes
         });
     }
