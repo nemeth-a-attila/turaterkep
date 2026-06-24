@@ -41,6 +41,12 @@ async function buildLayerTree(map) {
     );
 
     //
+    // EBBE GYŰJTJÜK AZ INDULÁSKOR LÁTSZÓ RÉTEGEKET
+    //
+
+    const defaultLayers = [];
+
+    //
     // TERVEZETT TÚRAMOZGALMAK
     //
 
@@ -89,6 +95,9 @@ async function buildLayerTree(map) {
                     }
                 }
             );
+
+            // induláskor látszódjon
+            defaultLayers.push(gpxLayer);
 
             trackNodes.push({
                 label: filename.replace(".gpx", ""),
@@ -156,11 +165,21 @@ async function buildLayerTree(map) {
         ]
     };
 
-    L.control.layers.tree(
+    const treeControl = L.control.layers.tree(
         baseTree,
         overlayTree,
         {
             collapsed: false
         }
-    ).addTo(map);
+    );
+
+    treeControl.addTo(map);
+
+    //
+    // TELJESÍTETT TÚRÁK AUTOMATIKUS BEKAPCSOLÁSA
+    //
+
+    for (const layer of defaultLayers) {
+        map.addLayer(layer);
+    }
 }
