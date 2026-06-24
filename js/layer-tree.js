@@ -1,5 +1,7 @@
 async function buildLayerTree(map) {
 
+    const trackStructure = await loadTrackStructure();
+
     //
     // ALAPTÉRKÉPEK
     //
@@ -39,21 +41,15 @@ async function buildLayerTree(map) {
     );
 
     //
-    // TERVEZETT
+    // TERVEZETT TÚRAMOZGALMAK
     //
 
     const plannedChildren = [];
 
-    const plannedFiles = await getPlannedTracks();
-
-    for (const file of plannedFiles) {
-
-        if (!file.name.endsWith(".gpx")) {
-            continue;
-        }
+    for (const filename of trackStructure.tervezett) {
 
         const gpxLayer = new L.GPX(
-            file.download_url,
+            `gpx/tervezett/${filename}`,
             {
                 async: true,
                 markers: {
@@ -65,39 +61,25 @@ async function buildLayerTree(map) {
         );
 
         plannedChildren.push({
-            label: file.name.replace(".gpx", ""),
+            label: filename.replace(".gpx", ""),
             layer: gpxLayer
         });
     }
 
     //
-    // TELJESÍTETT
+    // TELJESÍTETT TÚRÁK
     //
 
     const completedChildren = [];
 
-    const movements = await getCompletedMovements();
-
-    for (const movement of movements) {
-
-        if (movement.type !== "dir") {
-            continue;
-        }
-
-        const tracks = await getMovementTracks(
-            movement.name
-        );
+    for (const movementName in trackStructure.teljesitett) {
 
         const trackNodes = [];
 
-        for (const track of tracks) {
-
-            if (!track.name.endsWith(".gpx")) {
-                continue;
-            }
+        for (const filename of trackStructure.teljesitett[movementName]) {
 
             const gpxLayer = new L.GPX(
-                track.download_url,
+                `gpx/teljesitett/${movementName}/${filename}`,
                 {
                     async: true,
                     markers: {
@@ -109,24 +91,23 @@ async function buildLayerTree(map) {
             );
 
             trackNodes.push({
-                label: track.name.replace(".gpx", ""),
+                label: filename.replace(".gpx", ""),
                 layer: gpxLayer
             });
         }
 
         completedChildren.push({
-            label: movement.name,
+            label: movementName,
             children: trackNodes
         });
     }
 
     //
-    // TREE
+    // TREE CONTROL
     //
 
     const baseTree = {
         label: 'Alaptérkép',
-        noShow: true,
         children: [
             {
                 label: 'Freemap Slovakia',
@@ -141,7 +122,6 @@ async function buildLayerTree(map) {
 
     const overlayTree = {
         label: 'Rétegek',
-        selectAllCheckbox: true,
         children: [
 
             {
