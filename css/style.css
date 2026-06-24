@@ -9,21 +9,35 @@ body {
     height: 100vh;
 }
 
-.leaflet-control-layers {
-    max-height: 80vh;
-    overflow-y: auto;
+/* Fő csoportok */
+
+.leaflet-layerstree-header-name {
+    font-weight: 600;
 }
 
-.leaflet-control-layers-tree-group {
-    border-top: 1px solid #ccc;
-    margin-top: 6px;
+/* Behúzás minden szinten */
+
+.leaflet-layerstree-children {
+    margin-left: 18px;
+}
+
+/* Vonal a csoportok között */
+
+.leaflet-layerstree-node {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Főbb csoportok elkülönítése */
+
+.leaflet-control-layers-overlays > .leaflet-layerstree-children > .leaflet-layerstree-node {
+    border-top: 1px solid #d0d0d0;
     padding-top: 6px;
+    margin-top: 6px;
 }
 
-.leaflet-control-layers-tree-label {
-    font-size: 13px;
-}
+/* A túramozgalmak (BFK, OKT, stb.) legyenek félkövérek */
 
-.leaflet-control-layers-tree-children {
-    margin-left: 15px;
+.leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
+    font-weight: 700;
 }
