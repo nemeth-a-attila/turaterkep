@@ -60,7 +60,7 @@ async function buildLayerTree(map) {
                 async: true,
 
                 polyline_options: {
-                    color: '#00bfff',
+                    color: '#0066ff',
                     weight: 4,
                     opacity: 0.8
                 },
