@@ -142,12 +142,14 @@ async function buildLayerTree(map) {
 
             {
                 label: 'Tervezett túramozgalmak',
+                collapsed: true,
                 selectAllCheckbox: true,
                 children: plannedChildren
             },
 
             {
                 label: 'Teljesített túrák',
+                collapsed: true,
                 selectAllCheckbox: true,
                 children: completedChildren
             }
