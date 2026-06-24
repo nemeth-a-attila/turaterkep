@@ -13,3 +13,17 @@ body {
     max-height: 80vh;
     overflow-y: auto;
 }
+
+.leaflet-control-layers-tree-group {
+    border-top: 1px solid #ccc;
+    margin-top: 6px;
+    padding-top: 6px;
+}
+
+.leaflet-control-layers-tree-label {
+    font-size: 13px;
+}
+
+.leaflet-control-layers-tree-children {
+    margin-left: 15px;
+}
