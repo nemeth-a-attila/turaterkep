@@ -1,6 +1,6 @@
 async function buildLayerTree(map) {
 
-    const trackStructure = await loadTrackStructure();
+    const mapTracks = await loadMapTracks();
 
     //
     // ALAPTÉRKÉPEK
@@ -52,29 +52,18 @@ async function buildLayerTree(map) {
 
     const plannedChildren = [];
 
-    for (const filename of trackStructure.tervezett) {
+    const plannedTracks = mapTracks.features.filter(track => track.properties.category === "planned");
+    const completedTracks = mapTracks.features.filter(track => track.properties.category === "completed");
 
-        const gpxLayer = new L.GPX(
-            `gpx/tervezett/${filename}`,
-            {
-                async: true,
+    for (const track of plannedTracks) {
 
-                polyline_options: {
-                    color: '#0200b8',
-                    weight: 4,
-                    opacity: 0.8
-                },
-
-                markers: {
-                    startIcon: null,
-                    endIcon: null,
-                    wptIcons: {}
-                }
-            }
+        const gpxLayer = L.geoJSON(
+            track,
+            { style: { color: '#0200b8', weight: 4, opacity: 0.8 } }
         );
 
         plannedChildren.push({
-            label: filename.replace(".gpx", ""),
+            label: track.properties.filename.replace(".gpx", ""),
             layer: gpxLayer
         });
     }
@@ -85,36 +74,30 @@ async function buildLayerTree(map) {
 
     const completedChildren = [];
 
-    for (const movementName in trackStructure.teljesitett) {
+    const completedByMovement = completedTracks.reduce(
+        (groups, track) => {
+            (groups[track.properties.movement] ??= []).push(track);
+            return groups;
+        },
+        {}
+    );
+
+    for (const movementName in completedByMovement) {
 
         const trackNodes = [];
 
-        for (const filename of trackStructure.teljesitett[movementName]) {
+        for (const track of completedByMovement[movementName]) {
 
-            const gpxLayer = new L.GPX(
-                `gpx/teljesitett/${movementName}/${filename}`,
-                {
-                    async: true,
-
-                    polyline_options: {
-                        color: '#ff0000',
-                        weight: 3,
-                        opacity: 0.9
-                    },
-
-                    markers: {
-                        startIcon: null,
-                        endIcon: null,
-                        wptIcons: {}
-                    }
-                }
+            const gpxLayer = L.geoJSON(
+                track,
+                { style: { color: '#ff0000', weight: 3, opacity: 0.9 } }
             );
 
             // induláskor látszódjon
             defaultLayers.push(gpxLayer);
 
             trackNodes.push({
-                label: filename.replace(".gpx", ""),
+                label: track.properties.filename.replace(".gpx", ""),
                 layer: gpxLayer
             });
         }

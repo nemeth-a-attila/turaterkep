@@ -1,7 +1,9 @@
-async function loadTrackStructure() {
+async function loadMapTracks() {
+    const response = await fetch("data/map-tracks.json");
 
-    const response =
-        await fetch("data/tracks.json");
+    if (!response.ok) {
+        throw new Error("Az útvonal-adatfájl nem tölthető be.");
+    }
 
-    return await response.json();
+    return response.json();
 }
