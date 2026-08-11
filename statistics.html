@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Túrastatisztika</title>
+    <link rel="stylesheet" href="css/statistics.css">
+</head>
+<body>
+    <header class="page-header">
+        <a class="back-link" href="index.html">← Vissza a térképhez</a>
+        <div><p class="eyebrow">TÚRANAPLÓ</p><h1>Teljesített túrák statisztikája</h1></div>
+    </header>
+    <main>
+        <p id="updated-at" class="updated-at"></p>
+        <section id="summary-cards" class="summary-grid" aria-label="Összesítő statisztikák"></section>
+        <section class="panel chart-panel">
+            <div class="panel-heading"><p class="eyebrow">ÉVENKÉNT</p><h2>Megtett távolság</h2></div>
+            <div id="year-chart" class="bar-chart" aria-label="Éves megtett távolság"></div>
+        </section>
+        <section class="two-columns">
+            <section class="panel"><div class="panel-heading"><p class="eyebrow">TÚRAMOZGALMAK</p><h2>Távolság és túrák száma</h2></div><div id="movement-table"></div></section>
+            <section class="panel"><div class="panel-heading"><p class="eyebrow">REKORDOK</p><h2>Leghosszabb túrák</h2></div><ol id="longest-tracks" class="track-list"></ol></section>
+        </section>
+        <section class="panel">
+            <div class="panel-heading"><p class="eyebrow">TÚRANAPLÓ</p><h2>Minden teljesített túra</h2></div>
+            <div class="table-scroll"><table><thead><tr><th>Dátum</th><th>Túramozgalom</th><th>Útvonal</th><th>Távolság</th><th>Szint+</th></tr></thead><tbody id="track-table-body"></tbody></table></div>
+        </section>
+    </main>
+    <script src="js/statistics.js"></script>
+</body>
+</html>
