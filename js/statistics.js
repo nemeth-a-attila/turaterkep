@@ -26,6 +26,24 @@ function renderYears(tracks) {
     document.querySelector("#year-chart").innerHTML = years.map(({ year, distance }) => `<div class="bar-row"><span>${year}</span><div class="bar-track"><div class="bar" style="width: ${(distance / maximum) * 100}%"></div></div><strong>${formatKm(distance)}</strong></div>`).join("");
 }
 
+function renderYearMovements(tracks) {
+    const movements = [...new Set(tracks.map(track => track.movement))].sort((a, b) => a.localeCompare(b, "hu"));
+    const years = [...new Set(tracks.filter(track => track.year).map(track => track.year))].sort((a, b) => a - b);
+    const distances = tracks.reduce((result, track) => {
+        if (!track.year) return result;
+        (result[track.year] ??= {});
+        result[track.year][track.movement] = (result[track.year][track.movement] ?? 0) + track.distanceKm;
+        return result;
+    }, {});
+
+    document.querySelector("#year-movement-table").innerHTML = `
+        <thead><tr><th>Év</th>${movements.map(movement => `<th>${movement}</th>`).join("")}<th>Összesen</th></tr></thead>
+        <tbody>${years.map(year => {
+            const total = movements.reduce((sum, movement) => sum + (distances[year][movement] ?? 0), 0);
+            return `<tr><td><strong>${year}</strong></td>${movements.map(movement => `<td>${distances[year][movement] ? formatKm(distances[year][movement]) : "—"}</td>`).join("")}<td><strong>${formatKm(total)}</strong></td></tr>`;
+        }).join("")}</tbody>`;
+}
+
 function renderMovements(tracks) {
     const movements = Object.entries(groupBy(tracks, "movement")).map(([movement, entries]) => ({ movement, count: entries.length, distance: entries.reduce((sum, track) => sum + track.distanceKm, 0) })).sort((a, b) => b.distance - a.distance);
     document.querySelector("#movement-table").innerHTML = `<table><thead><tr><th>Mozgalom</th><th>Túrák</th><th>Távolság</th></tr></thead><tbody>${movements.map(item => `<tr><td>${item.movement}</td><td>${item.count} db</td><td>${formatKm(item.distance)}</td></tr>`).join("")}</tbody></table>`;
@@ -41,5 +59,5 @@ function renderTracks(tracks) {
 
 fetch("data/statistics.json")
     .then(response => { if (!response.ok) throw new Error("A statisztikai adatfájl nem tölthető be."); return response.json(); })
-    .then(data => { renderSummary(data.tracks); renderYears(data.tracks); renderMovements(data.tracks); renderLongestTracks(data.tracks); renderTracks(data.tracks); document.querySelector("#updated-at").textContent = `Az adatok a teljesített GPX-fájlokból készültek. Frissítve: ${new Date(data.generatedAt).toLocaleString("hu-HU")}.`; })
+    .then(data => { renderSummary(data.tracks); renderYears(data.tracks); renderYearMovements(data.tracks); renderMovements(data.tracks); renderLongestTracks(data.tracks); renderTracks(data.tracks); document.querySelector("#updated-at").textContent = `Az adatok a teljesített GPX-fájlokból készültek. Frissítve: ${new Date(data.generatedAt).toLocaleString("hu-HU")}.`; })
     .catch(error => { document.querySelector("main").innerHTML = `<p class="error">${error.message} Futtasd a generate-tracks.bat fájlt.</p>`; });
