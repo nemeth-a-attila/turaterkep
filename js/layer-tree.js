@@ -20,6 +20,29 @@ async function buildLayerTree(map) {
         }
     );
 
+    const mapnik = L.tileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { maxZoom: 19, attribution: '© OpenStreetMap contributors' }
+    );
+
+    const openTopoMap = L.tileLayer(
+        'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        { maxZoom: 17, attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)' }
+    );
+
+    const satellite = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { maxZoom: 19, attribution: 'Tiles © Esri' }
+    );
+
+    const thunderforestApiKey = window.mapConfig?.thunderforestApiKey;
+    const thunderforest = thunderforestApiKey
+        ? L.tileLayer(
+            `https://api.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`,
+            { maxZoom: 22, attribution: 'Maps © Thunderforest, Data © OpenStreetMap contributors' }
+        )
+        : null;
+
     freemap.addTo(map);
 
     //
@@ -123,7 +146,23 @@ async function buildLayerTree(map) {
             {
                 label: 'Mapy.com Outdoor',
                 layer: mapy
-            }
+            },
+            {
+                label: 'OpenStreetMap Mapnik',
+                layer: mapnik
+            },
+            {
+                label: 'OpenTopoMap',
+                layer: openTopoMap
+            },
+            {
+                label: 'Műholdkép (Esri)',
+                layer: satellite
+            },
+            ...(thunderforest ? [{
+                label: 'Thunderforest Outdoors',
+                layer: thunderforest
+            }] : [])
         ]
     };
 
