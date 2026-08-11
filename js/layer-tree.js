@@ -82,7 +82,7 @@ async function buildLayerTree(map) {
 
         const gpxLayer = L.geoJSON(
             track,
-            { style: { color: '#0200b8', weight: 4, opacity: 0.8 } }
+            { style: { color: '#0200b8', weight: 3, opacity: 0.8 } }
         );
 
         plannedChildren.push({
