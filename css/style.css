@@ -1,4 +1,4 @@
-html,
+﻿html,
 body {
     margin: 0;
     height: 100%;
@@ -27,26 +27,26 @@ body {
     background: #f2f7f3;
 }
 
-/* Fő csoportok */
+/* FÅ‘ csoportok */
 
 .leaflet-layerstree-header-name {
     font-weight: 600;
 }
 
-/* Behúzás minden szinten */
+/* BehÃºzÃ¡s minden szinten */
 
 .leaflet-layerstree-children {
     margin-left: 18px;
 }
 
-/* Vonal a csoportok között */
+/* Vonal a csoportok kÃ¶zÃ¶tt */
 
 .leaflet-layerstree-node {
     margin-top: 4px;
     margin-bottom: 4px;
 }
 
-/* Főbb csoportok elkülönítése */
+/* FÅ‘bb csoportok elkÃ¼lÃ¶nÃ­tÃ©se */
 
 .leaflet-control-layers-overlays > .leaflet-layerstree-children > .leaflet-layerstree-node {
     border-top: 1px solid #d0d0d0;
@@ -54,8 +54,19 @@ body {
     margin-top: 6px;
 }
 
-/* A túramozgalmak (BFK, OKT, stb.) legyenek félkövérek */
+/* A tÃºramozgalmak (BFK, OKT, stb.) legyenek fÃ©lkÃ¶vÃ©rek */
 
 .leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
     font-weight: 700;
 }
+
+.line-style-control { background: #fff; border-radius: 4px; box-shadow: 0 1px 5px rgba(0, 0, 0, .35); font: 14px system-ui, sans-serif; }
+.line-style-control summary { cursor: pointer; padding: 8px 12px; font-weight: 600; }
+.line-style-panel { width: 230px; padding: 0 12px 12px; }
+.line-style-panel fieldset { display: grid; gap: 8px; margin: 8px 0 0; padding: 9px; border: 1px solid #d0d0d0; }
+.line-style-panel legend { font-weight: 700; }
+.line-style-panel label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.line-style-panel input[type="color"] { width: 34px; height: 25px; padding: 1px; }
+.line-style-panel input[type="range"] { width: 112px; vertical-align: middle; }
+.line-style-panel output { display: inline-block; width: 36px; text-align: right; }
+.line-style-panel button { justify-self: start; padding: 4px 7px; cursor: pointer; }

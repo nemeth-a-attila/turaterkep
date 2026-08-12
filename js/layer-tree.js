@@ -1,52 +1,62 @@
-async function buildLayerTree(map) {
+﻿async function buildLayerTree(map) {
 
-    const mapTracks = await loadMapTracks();
+const mapTracks = await loadMapTracks();
+    const defaultLineStyles = {
+        planned: { color: '#0200b8', weight: 3, opacity: 0.8 },
+        completed: { color: '#ff0000', weight: 3, opacity: 0.9 }
+    };
+    const storedLineStyles = JSON.parse(localStorage.getItem('turaterkep-line-styles') || '{}');
+    const lineStyles = {
+        planned: { ...defaultLineStyles.planned, ...storedLineStyles.planned },
+        completed: { ...defaultLineStyles.completed, ...storedLineStyles.completed }
+    };
+    const routeLayers = { planned: [], completed: [] };
 
     //
-    // ALAPTÉRKÉPEK
+    // ALAPTÃ‰RKÃ‰PEK
     //
 
     const freemap = L.tileLayer(
         'https://outdoor.tiles.freemap.sk/{z}/{x}/{y}',
         {
-            attribution: '© Freemap Slovakia'
+            attribution: 'Â© Freemap Slovakia'
         }
     );
 
     const mapy = L.tileLayer(
         'https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?apikey=eA-cMTDwX8Ik74btJNe-zHrkSIeOsOG5pkOel-VgHZA',
         {
-            attribution: '© Mapy.com'
+            attribution: 'Â© Mapy.com'
         }
     );
 
     const mapnik = L.tileLayer(
         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { maxZoom: 19, attribution: '© OpenStreetMap contributors' }
+        { maxZoom: 19, attribution: 'Â© OpenStreetMap contributors' }
     );
 
     const openTopoMap = L.tileLayer(
         'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-        { maxZoom: 17, attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)' }
+        { maxZoom: 17, attribution: 'Map data: Â© OpenStreetMap contributors, SRTM | Map style: Â© OpenTopoMap (CC-BY-SA)' }
     );
 
     const satellite = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        { maxZoom: 19, attribution: 'Tiles © Esri' }
+        { maxZoom: 19, attribution: 'Tiles Â© Esri' }
     );
 
     const thunderforestApiKey = window.mapConfig?.thunderforestApiKey;
     const thunderforest = thunderforestApiKey
         ? L.tileLayer(
             `https://api.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`,
-            { maxZoom: 22, attribution: 'Maps © Thunderforest, Data © OpenStreetMap contributors' }
+            { maxZoom: 22, attribution: 'Maps Â© Thunderforest, Data Â© OpenStreetMap contributors' }
         )
         : null;
 
     freemap.addTo(map);
 
     //
-    // TÚRAJELZÉSEK
+    // TÃšRAJELZÃ‰SEK
     //
 
     const turistautak = L.tileLayer(
@@ -64,13 +74,13 @@ async function buildLayerTree(map) {
     );
 
     //
-    // EBBE GYŰJTJÜK AZ INDULÁSKOR LÁTSZÓ RÉTEGEKET
+    // EBBE GYÅ°JTJÃœK AZ INDULÃSKOR LÃTSZÃ“ RÃ‰TEGEKET
     //
 
     const defaultLayers = [];
 
     //
-    // TERVEZETT TÚRAMOZGALMAK
+    // TERVEZETT TÃšRAMOZGALMAK
     //
 
     const plannedChildren = [];
@@ -82,8 +92,10 @@ async function buildLayerTree(map) {
 
         const gpxLayer = L.geoJSON(
             track,
-            { style: { color: '#0200b8', weight: 3, opacity: 0.8 } }
+            { style: lineStyles.planned }
         );
+
+        routeLayers.planned.push(gpxLayer);
 
         plannedChildren.push({
             label: track.properties.filename.replace(".gpx", ""),
@@ -92,7 +104,7 @@ async function buildLayerTree(map) {
     }
 
     //
-    // TELJESÍTETT TÚRÁK
+    // TELJESÃTETT TÃšRÃK
     //
 
     const completedChildren = [];
@@ -113,10 +125,12 @@ async function buildLayerTree(map) {
 
             const gpxLayer = L.geoJSON(
                 track,
-                { style: { color: '#ff0000', weight: 3, opacity: 0.9 } }
+                { style: lineStyles.completed }
             );
 
-            // induláskor látszódjon
+            routeLayers.completed.push(gpxLayer);
+
+            // indulÃ¡skor lÃ¡tszÃ³djon
             defaultLayers.push(gpxLayer);
 
             trackNodes.push({
@@ -137,7 +151,7 @@ async function buildLayerTree(map) {
     //
 
     const baseTree = {
-        label: 'Alaptérkép',
+        label: 'AlaptÃ©rkÃ©p',
         children: [
             {
                 label: 'Freemap Slovakia',
@@ -156,7 +170,7 @@ async function buildLayerTree(map) {
                 layer: openTopoMap
             },
             {
-                label: 'Műholdkép (Esri)',
+                label: 'MÅ±holdkÃ©p (Esri)',
                 layer: satellite
             },
             ...(thunderforest ? [{
@@ -167,11 +181,11 @@ async function buildLayerTree(map) {
     };
 
     const overlayTree = {
-        label: 'Rétegek',
+        label: 'RÃ©tegek',
         children: [
 
             {
-                label: 'Túrajelzések',
+                label: 'TÃºrajelzÃ©sek',
                 selectAllCheckbox: true,
                 children: [
                     {
@@ -186,14 +200,14 @@ async function buildLayerTree(map) {
             },
 
             {
-                label: 'Tervezett túramozgalmak',
+                label: 'Tervezett tÃºramozgalmak',
                 collapsed: true,
                 selectAllCheckbox: true,
                 children: plannedChildren
             },
 
             {
-                label: 'Teljesített túrák',
+                label: 'TeljesÃ­tett tÃºrÃ¡k',
                 collapsed: true,
                 selectAllCheckbox: true,
                 children: completedChildren
@@ -209,10 +223,61 @@ async function buildLayerTree(map) {
         }
     );
 
-    treeControl.addTo(map);
+treeControl.addTo(map);
+
+    const lineStyleControl = L.control({ position: 'topright' });
+    lineStyleControl.onAdd = () => {
+        const container = L.DomUtil.create('div', 'leaflet-bar line-style-control');
+        container.innerHTML = `
+            <details>
+                <summary>Vonalstílusok</summary>
+                <div class="line-style-panel">
+                    <fieldset data-category="planned">
+                        <legend>Tervezett túrák</legend>
+                        <label>Szín <input type="color" value="${lineStyles.planned.color}" data-property="color"></label>
+                        <label>Vastagság <span><input type="range" min="1" max="10" step="1" value="${lineStyles.planned.weight}" data-property="weight"><output>${lineStyles.planned.weight} px</output></span></label>
+                        <button type="button">Alaphelyzet</button>
+                    </fieldset>
+                    <fieldset data-category="completed">
+                        <legend>Teljesített túrák</legend>
+                        <label>Szín <input type="color" value="${lineStyles.completed.color}" data-property="color"></label>
+                        <label>Vastagság <span><input type="range" min="1" max="10" step="1" value="${lineStyles.completed.weight}" data-property="weight"><output>${lineStyles.completed.weight} px</output></span></label>
+                        <button type="button">Alaphelyzet</button>
+                    </fieldset>
+                </div>
+            </details>`;
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.disableScrollPropagation(container);
+
+        const saveAndApply = category => {
+            routeLayers[category].forEach(layer => layer.setStyle(lineStyles[category]));
+            localStorage.setItem('turaterkep-line-styles', JSON.stringify(lineStyles));
+        };
+        container.querySelectorAll('fieldset').forEach(fieldset => {
+            const category = fieldset.dataset.category;
+            const colorInput = fieldset.querySelector('[data-property="color"]');
+            const weightInput = fieldset.querySelector('[data-property="weight"]');
+            const output = fieldset.querySelector('output');
+            colorInput.addEventListener('input', () => { lineStyles[category].color = colorInput.value; saveAndApply(category); });
+            weightInput.addEventListener('input', () => {
+                lineStyles[category].weight = Number(weightInput.value);
+                output.textContent = `${weightInput.value} px`;
+                saveAndApply(category);
+            });
+            fieldset.querySelector('button').addEventListener('click', () => {
+                lineStyles[category] = { ...defaultLineStyles[category] };
+                colorInput.value = lineStyles[category].color;
+                weightInput.value = lineStyles[category].weight;
+                output.textContent = `${lineStyles[category].weight} px`;
+                saveAndApply(category);
+            });
+        });
+        return container;
+    };
+    lineStyleControl.addTo(map);
 
     //
-    // TELJESÍTETT TÚRÁK AUTOMATIKUS BEKAPCSOLÁSA
+    // TELJESÃTETT TÃšRÃK AUTOMATIKUS BEKAPCSOLÃSA
     //
 
     for (const layer of defaultLayers) {
