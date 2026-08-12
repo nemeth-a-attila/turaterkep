@@ -86,3 +86,15 @@ body {
 .screenshot-control button:disabled { cursor: wait; color: #69756f; }
 .taking-map-screenshot .leaflet-control-container,
 .taking-map-screenshot .statistics-link { visibility: hidden; }
+.precise-zoom-control {
+    width: 220px;
+    padding: 8px 10px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
+    font: 600 13px system-ui, sans-serif;
+}
+
+.precise-zoom-control label { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.precise-zoom-control output { font-variant-numeric: tabular-nums; }
+.precise-zoom-control input { width: 100%; cursor: pointer; }

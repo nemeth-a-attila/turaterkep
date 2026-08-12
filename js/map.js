@@ -1,4 +1,8 @@
-const map = L.map("map").setView(
+const map = L.map("map", {
+    zoomSnap: 0.01,
+    zoomDelta: 0.25,
+    wheelPxPerZoomLevel: 180
+}).setView(
     [47.2, 19.5],
     8
 );
@@ -49,6 +53,30 @@ screenshotControl.onAdd = () => {
     return container;
 };
 screenshotControl.addTo(map);
+
+const preciseZoomControl = L.control({ position: 'bottomleft' });
+preciseZoomControl.onAdd = () => {
+    const container = L.DomUtil.create('div', 'leaflet-bar precise-zoom-control');
+    container.innerHTML = `
+        <label for="precise-zoom">Pontos zoom <output></output></label>
+        <input id="precise-zoom" type="range" min="1" max="19" step="0.01" aria-label="Térkép nagyítása">
+    `;
+
+    const slider = container.querySelector('input');
+    const output = container.querySelector('output');
+    const updateValue = () => {
+        slider.value = map.getZoom();
+        output.textContent = map.getZoom().toFixed(2);
+    };
+
+    slider.addEventListener('input', () => map.setZoom(Number(slider.value), { animate: false }));
+    map.on('zoomend', updateValue);
+    updateValue();
+    L.DomEvent.disableClickPropagation(container);
+    L.DomEvent.disableScrollPropagation(container);
+    return container;
+};
+preciseZoomControl.addTo(map);
 async function takeBrowserCapturedScreenshot() {
     document.body.classList.add('taking-map-screenshot');
 
