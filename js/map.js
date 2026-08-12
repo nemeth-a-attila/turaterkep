@@ -27,7 +27,7 @@ screenshotControl.onAdd = () => {
         button.disabled = true;
         button.textContent = 'Készül…';
 
-        const takeScreenshot = map.activeBaseMap === 'freemap'
+        const takeScreenshot = map.freemapLayer && map.hasLayer(map.freemapLayer)
             ? takeBrowserCapturedScreenshot
             : () => mapScreenshoter.takeScreen('blob');
 

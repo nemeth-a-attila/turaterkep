@@ -54,7 +54,7 @@ const mapTracks = await loadMapTracks();
         : null;
 
     freemap.addTo(map);
-    map.activeBaseMap = 'freemap';
+    map.freemapLayer = freemap;
 
     //
     // TÚRAJELZÉSEK
