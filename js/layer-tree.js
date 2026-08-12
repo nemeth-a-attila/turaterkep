@@ -1,4 +1,4 @@
-﻿async function buildLayerTree(map) {
+async function buildLayerTree(map) {
 
 const mapTracks = await loadMapTracks();
     const defaultLineStyles = {
@@ -13,50 +13,50 @@ const mapTracks = await loadMapTracks();
     const routeLayers = { planned: [], completed: [] };
 
     //
-    // ALAPTÃ‰RKÃ‰PEK
+    // ALAPTÉRKÉPEK
     //
 
     const freemap = L.tileLayer(
         'https://outdoor.tiles.freemap.sk/{z}/{x}/{y}',
         {
-            attribution: 'Â© Freemap Slovakia'
+            attribution: '© Freemap Slovakia'
         }
     );
 
     const mapy = L.tileLayer(
         'https://api.mapy.com/v1/maptiles/outdoor/256/{z}/{x}/{y}?apikey=eA-cMTDwX8Ik74btJNe-zHrkSIeOsOG5pkOel-VgHZA',
         {
-            attribution: 'Â© Mapy.com'
+            attribution: '© Mapy.com'
         }
     );
 
     const mapnik = L.tileLayer(
         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { maxZoom: 19, attribution: 'Â© OpenStreetMap contributors' }
+        { maxZoom: 19, attribution: '© OpenStreetMap contributors' }
     );
 
     const openTopoMap = L.tileLayer(
         'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-        { maxZoom: 17, attribution: 'Map data: Â© OpenStreetMap contributors, SRTM | Map style: Â© OpenTopoMap (CC-BY-SA)' }
+        { maxZoom: 17, attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)' }
     );
 
     const satellite = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        { maxZoom: 19, attribution: 'Tiles Â© Esri' }
+        { maxZoom: 19, attribution: 'Tiles © Esri' }
     );
 
     const thunderforestApiKey = window.mapConfig?.thunderforestApiKey;
     const thunderforest = thunderforestApiKey
         ? L.tileLayer(
             `https://api.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`,
-            { maxZoom: 22, attribution: 'Maps Â© Thunderforest, Data Â© OpenStreetMap contributors' }
+            { maxZoom: 22, attribution: 'Maps © Thunderforest, Data © OpenStreetMap contributors' }
         )
         : null;
 
     freemap.addTo(map);
 
     //
-    // TÃšRAJELZÃ‰SEK
+    // TÚRAJELZÉSEK
     //
 
     const turistautak = L.tileLayer(
@@ -74,13 +74,13 @@ const mapTracks = await loadMapTracks();
     );
 
     //
-    // EBBE GYÅ°JTJÃœK AZ INDULÃSKOR LÃTSZÃ“ RÃ‰TEGEKET
+    // EBBE GYŰJTJÜK AZ INDULÁSKOR LÁTSZÓ RÉTEGEKET
     //
 
     const defaultLayers = [];
 
     //
-    // TERVEZETT TÃšRAMOZGALMAK
+    // TERVEZETT TÚRAMOZGALMAK
     //
 
     const plannedChildren = [];
@@ -104,7 +104,7 @@ const mapTracks = await loadMapTracks();
     }
 
     //
-    // TELJESÃTETT TÃšRÃK
+    // TELJESÍTETT TÚRÁK
     //
 
     const completedChildren = [];
@@ -130,7 +130,7 @@ const mapTracks = await loadMapTracks();
 
             routeLayers.completed.push(gpxLayer);
 
-            // indulÃ¡skor lÃ¡tszÃ³djon
+            // induláskor látszódjon
             defaultLayers.push(gpxLayer);
 
             trackNodes.push({
@@ -151,7 +151,7 @@ const mapTracks = await loadMapTracks();
     //
 
     const baseTree = {
-        label: 'AlaptÃ©rkÃ©p',
+        label: 'Alaptérkép',
         children: [
             {
                 label: 'Freemap Slovakia',
@@ -170,7 +170,7 @@ const mapTracks = await loadMapTracks();
                 layer: openTopoMap
             },
             {
-                label: 'MÅ±holdkÃ©p (Esri)',
+                label: 'Műholdkép (Esri)',
                 layer: satellite
             },
             ...(thunderforest ? [{
@@ -181,11 +181,11 @@ const mapTracks = await loadMapTracks();
     };
 
     const overlayTree = {
-        label: 'RÃ©tegek',
+        label: 'Rétegek',
         children: [
 
             {
-                label: 'TÃºrajelzÃ©sek',
+                label: 'Túrajelzések',
                 selectAllCheckbox: true,
                 children: [
                     {
@@ -200,14 +200,14 @@ const mapTracks = await loadMapTracks();
             },
 
             {
-                label: 'Tervezett tÃºramozgalmak',
+                label: 'Tervezett túramozgalmak',
                 collapsed: true,
                 selectAllCheckbox: true,
                 children: plannedChildren
             },
 
             {
-                label: 'TeljesÃ­tett tÃºrÃ¡k',
+                label: 'Teljesített túrák',
                 collapsed: true,
                 selectAllCheckbox: true,
                 children: completedChildren
@@ -277,7 +277,7 @@ treeControl.addTo(map);
     lineStyleControl.addTo(map);
 
     //
-    // TELJESÃTETT TÃšRÃK AUTOMATIKUS BEKAPCSOLÃSA
+    // TELJESÍTETT TÚRÁK AUTOMATIKUS BEKAPCSOLÁSA
     //
 
     for (const layer of defaultLayers) {
