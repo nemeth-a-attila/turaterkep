@@ -23,7 +23,11 @@ screenshotControl.onAdd = () => {
         button.disabled = true;
         button.textContent = 'Készül…';
 
-        mapScreenshoter.takeScreen('blob')
+        const takeScreenshot = map.activeBaseMap === 'freemap'
+            ? takeBrowserCapturedScreenshot
+            : () => mapScreenshoter.takeScreen('blob');
+
+        takeScreenshot()
             .then(blob => {
                 const link = document.createElement('a');
                 const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -45,3 +49,41 @@ screenshotControl.onAdd = () => {
     return container;
 };
 screenshotControl.addTo(map);
+async function takeBrowserCapturedScreenshot() {
+    document.body.classList.add('taking-map-screenshot');
+
+    try {
+        const stream = await navigator.mediaDevices.getDisplayMedia({
+            video: { displaySurface: 'browser' },
+            audio: false,
+            preferCurrentTab: true
+        });
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        await video.play();
+        await new Promise(resolve => setTimeout(resolve, 250));
+
+        const mapElement = document.querySelector('#map');
+        const bounds = mapElement.getBoundingClientRect();
+        const scale = video.videoWidth / window.innerWidth;
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(bounds.width * scale);
+        canvas.height = Math.round(bounds.height * scale);
+        canvas.getContext('2d').drawImage(
+            video,
+            Math.round(bounds.left * scale),
+            Math.round(bounds.top * scale),
+            canvas.width,
+            canvas.height,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        stream.getTracks().forEach(track => track.stop());
+        return await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    } finally {
+        document.body.classList.remove('taking-map-screenshot');
+    }
+}

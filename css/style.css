@@ -84,3 +84,5 @@ body {
 
 .screenshot-control button:hover { background: #f2f7f3; }
 .screenshot-control button:disabled { cursor: wait; color: #69756f; }
+.taking-map-screenshot .leaflet-control-container,
+.taking-map-screenshot .statistics-link { visibility: hidden; }
