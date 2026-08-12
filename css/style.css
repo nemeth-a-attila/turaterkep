@@ -1,4 +1,4 @@
-﻿html,
+html,
 body {
     margin: 0;
     height: 100%;
@@ -70,3 +70,17 @@ body {
 .line-style-panel input[type="range"] { width: 112px; vertical-align: middle; }
 .line-style-panel output { display: inline-block; width: 36px; text-align: right; }
 .line-style-panel button { justify-self: start; padding: 4px 7px; cursor: pointer; }
+.screenshot-control button {
+    display: block;
+    min-width: 68px;
+    height: 30px;
+    padding: 0 8px;
+    border: 0;
+    background: #fff;
+    color: #1c3529;
+    cursor: pointer;
+    font: 600 13px system-ui, sans-serif;
+}
+
+.screenshot-control button:hover { background: #f2f7f3; }
+.screenshot-control button:disabled { cursor: wait; color: #69756f; }
