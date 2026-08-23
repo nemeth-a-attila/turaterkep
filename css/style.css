@@ -9,26 +9,44 @@ body {
     height: 100vh;
 }
 
-/* Fő csoportok */
+.statistics-link {
+    position: fixed;
+    z-index: 1000;
+    top: 12px;
+    left: 50px;
+    padding: 8px 12px;
+    color: #1c3529;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
+    font: 600 14px system-ui, sans-serif;
+    text-decoration: none;
+}
+
+.statistics-link:hover {
+    background: #f2f7f3;
+}
+
+/* FÅ‘ csoportok */
 
 .leaflet-layerstree-header-name {
     font-weight: 600;
 }
 
-/* Behúzás minden szinten */
+/* BehÃºzÃ¡s minden szinten */
 
 .leaflet-layerstree-children {
     margin-left: 18px;
 }
 
-/* Vonal a csoportok között */
+/* Vonal a csoportok kÃ¶zÃ¶tt */
 
 .leaflet-layerstree-node {
     margin-top: 4px;
     margin-bottom: 4px;
 }
 
-/* Főbb csoportok elkülönítése */
+/* FÅ‘bb csoportok elkÃ¼lÃ¶nÃ­tÃ©se */
 
 .leaflet-control-layers-overlays > .leaflet-layerstree-children > .leaflet-layerstree-node {
     border-top: 1px solid #d0d0d0;
@@ -36,8 +54,47 @@ body {
     margin-top: 6px;
 }
 
-/* A túramozgalmak (BFK, OKT, stb.) legyenek félkövérek */
+/* A tÃºramozgalmak (BFK, OKT, stb.) legyenek fÃ©lkÃ¶vÃ©rek */
 
 .leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
     font-weight: 700;
 }
+
+.line-style-control { background: #fff; border-radius: 4px; box-shadow: 0 1px 5px rgba(0, 0, 0, .35); font: 14px system-ui, sans-serif; }
+.line-style-control summary { cursor: pointer; padding: 8px 12px; font-weight: 600; }
+.line-style-panel { width: 230px; padding: 0 12px 12px; }
+.line-style-panel fieldset { display: grid; gap: 8px; margin: 8px 0 0; padding: 9px; border: 1px solid #d0d0d0; }
+.line-style-panel legend { font-weight: 700; }
+.line-style-panel label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.line-style-panel input[type="color"] { width: 34px; height: 25px; padding: 1px; }
+.line-style-panel input[type="range"] { width: 112px; vertical-align: middle; }
+.line-style-panel output { display: inline-block; width: 36px; text-align: right; }
+.line-style-panel button { justify-self: start; padding: 4px 7px; cursor: pointer; }
+.screenshot-control button {
+    display: block;
+    min-width: 68px;
+    height: 30px;
+    padding: 0 8px;
+    border: 0;
+    background: #fff;
+    color: #1c3529;
+    cursor: pointer;
+    font: 600 13px system-ui, sans-serif;
+}
+
+.screenshot-control button:hover { background: #f2f7f3; }
+.screenshot-control button:disabled { cursor: wait; color: #69756f; }
+.taking-map-screenshot .leaflet-control-container,
+.taking-map-screenshot .statistics-link { visibility: hidden; }
+.precise-zoom-control {
+    width: 220px;
+    padding: 8px 10px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
+    font: 600 13px system-ui, sans-serif;
+}
+
+.precise-zoom-control label { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.precise-zoom-control output { font-variant-numeric: tabular-nums; }
+.precise-zoom-control input { width: 100%; cursor: pointer; }

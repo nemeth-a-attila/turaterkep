@@ -1,0 +1,671 @@
+{
+  "generatedAt": "2026-08-18T11:33:45.800Z",
+  "tracks": [
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.04.21 Alsóörs - Balatonalmádi.gpx",
+      "date": "2025-04-21",
+      "year": 2025,
+      "month": 4,
+      "distanceKm": 10.08744113050355,
+      "elevationGainM": 255.40015411376953
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.05.02 Pétfürdő - Litér.gpx",
+      "date": "2025-05-02",
+      "year": 2025,
+      "month": 5,
+      "distanceKm": 15.121678554751274,
+      "elevationGainM": 392.19981384277344
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.06.14 Csopak - Alsóörs.gpx",
+      "date": "2025-06-14",
+      "year": 2025,
+      "month": 6,
+      "distanceKm": 8.334927623849179,
+      "elevationGainM": 269.60015869140625
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.07.14 Csopak - Balatonarács.gpx",
+      "date": "2025-07-14",
+      "year": 2025,
+      "month": 7,
+      "distanceKm": 8.333458550392624,
+      "elevationGainM": 290.40013122558594
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.08.09 Balatonarács - Balatonfüred.gpx",
+      "date": "2025-08-09",
+      "year": 2025,
+      "month": 8,
+      "distanceKm": 6.867862876372872,
+      "elevationGainM": 283.3999786376953
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2025.08.23 Balatonfüred - Balatonszőlős.gpx",
+      "date": "2025-08-23",
+      "year": 2025,
+      "month": 8,
+      "distanceKm": 9.445166004748861,
+      "elevationGainM": 130.60011291503906
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2026.03.07 Litér - Balatonalmádi.gpx",
+      "date": "2026-03-07",
+      "year": 2026,
+      "month": 3,
+      "distanceKm": 13.919515214992243,
+      "elevationGainM": 317.2001190185547
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2026.03.21 Pécselyi elágazás - Balatonszőlős.gpx",
+      "date": "2026-03-21",
+      "year": 2026,
+      "month": 3,
+      "distanceKm": 8.21681720117112,
+      "elevationGainM": 225.5999298095703
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2026.05.24 Pécselyi elágazás - Vászoly.gpx",
+      "date": "2026-05-24",
+      "year": 2026,
+      "month": 5,
+      "distanceKm": 9.612464421417439,
+      "elevationGainM": 205.79989624023438
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2026.07.09 Vászoly - Szentatalfa.gpx",
+      "date": "2026-07-09",
+      "year": 2026,
+      "month": 7,
+      "distanceKm": 13.52966012260104,
+      "elevationGainM": 452.1998596191406
+    },
+    {
+      "movement": "Balaton-felvidéki Kéktúra (BFK)",
+      "filename": "2026.08.08 Szentantalfa - Monoszlói elágazás.gpx",
+      "date": "2026-08-08",
+      "year": 2026,
+      "month": 8,
+      "distanceKm": 9.954433475069676,
+      "elevationGainM": 384.1997833251953
+    },
+    {
+      "movement": "Egyéb",
+      "filename": "2016.09.30 Pilisszentlászló - Pilisszentlászló (TB).gpx",
+      "date": "2016-09-30",
+      "year": 2016,
+      "month": 9,
+      "distanceKm": 14.320904449284294,
+      "elevationGainM": 336
+    },
+    {
+      "movement": "Egyéb",
+      "filename": "2023.07.02 Dömös - Rám-szakadék.gpx",
+      "date": "2023-07-02",
+      "year": 2023,
+      "month": 7,
+      "distanceKm": 12.874494841234464,
+      "elevationGainM": 582.8000869750977
+    },
+    {
+      "movement": "Egyéb",
+      "filename": "2023.10.08 Nagymaros - Remete-barlang.gpx",
+      "date": "2023-10-08",
+      "year": 2023,
+      "month": 10,
+      "distanceKm": 9.083566108887542,
+      "elevationGainM": 550.4002304077148
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2019.08.01 Romhány - Becske.gpx",
+      "date": "2019-08-01",
+      "year": 2019,
+      "month": 8,
+      "distanceKm": 15.478082601288467,
+      "elevationGainM": 255
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2019.10.27 Nagykovácsi - Hűvösvölgy.gpx",
+      "date": "2019-10-27",
+      "year": 2019,
+      "month": 10,
+      "distanceKm": 12.441736935467954,
+      "elevationGainM": 185
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2020.10.23 Pilisborosjenő - Hűvösvölgy.gpx",
+      "date": "2020-10-23",
+      "year": 2020,
+      "month": 10,
+      "distanceKm": 15.561223819309419,
+      "elevationGainM": 519
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2020.10.28 Felsőpetény - Ősagárd.gpx",
+      "date": "2020-10-28",
+      "year": 2020,
+      "month": 10,
+      "distanceKm": 6.627514727725261,
+      "elevationGainM": 160
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2020.11.21 Becske - Szandaváralja.gpx",
+      "date": "2020-11-21",
+      "year": 2020,
+      "month": 11,
+      "distanceKm": 11.660656292294917,
+      "elevationGainM": 424
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2020.12.06 Felsőpetény - Alsopetény.gpx",
+      "date": "2020-12-06",
+      "year": 2020,
+      "month": 12,
+      "distanceKm": 9.548765053502096,
+      "elevationGainM": 62
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.03.09 Ősagárd - Szendehely.gpx",
+      "date": "2021-03-09",
+      "year": 2021,
+      "month": 3,
+      "distanceKm": 14.937085325326517,
+      "elevationGainM": 528
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.03.31 Szendehely - Nógrád.gpx",
+      "date": "2021-03-31",
+      "year": 2021,
+      "month": 3,
+      "distanceKm": 14.556907065430202,
+      "elevationGainM": 334
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.05.21 Pilisborosjenő - Csobánka.gpx",
+      "date": "2021-05-21",
+      "year": 2021,
+      "month": 5,
+      "distanceKm": 17.64997784869039,
+      "elevationGainM": 652
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.05.28 Romhány - Felsőpetény.gpx",
+      "date": "2021-05-28",
+      "year": 2021,
+      "month": 5,
+      "distanceKm": 12.079271725573411,
+      "elevationGainM": 290
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.06.05 Csobánka - Pilisszentkereszt.gpx",
+      "date": "2021-06-05",
+      "year": 2021,
+      "month": 6,
+      "distanceKm": 9.812155943092428,
+      "elevationGainM": 251
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.07.10 Pilisszentkereszt - Pilisszentlászló.gpx",
+      "date": "2021-07-10",
+      "year": 2021,
+      "month": 7,
+      "distanceKm": 14.661699457891725,
+      "elevationGainM": 472
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.08.01 Piliszentlászló - Visegrád.gpx",
+      "date": "2021-08-01",
+      "year": 2021,
+      "month": 8,
+      "distanceKm": 14.893379114494037,
+      "elevationGainM": 417
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.08.03 Piliscsaba - Klastrompuszta.gpx",
+      "date": "2021-08-03",
+      "year": 2021,
+      "month": 8,
+      "distanceKm": 12.886306602416388,
+      "elevationGainM": 285
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.08.14 Kisinóci turistaház - Nógrád.gpx",
+      "date": "2021-08-14",
+      "year": 2021,
+      "month": 8,
+      "distanceKm": 20.638710282235078,
+      "elevationGainM": 771
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.10.08 Kisinóci turistaház - Törökmező.gpx",
+      "date": "2021-10-08",
+      "year": 2021,
+      "month": 10,
+      "distanceKm": 9.7909972972221,
+      "elevationGainM": 154
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.10.09 Törökmező - Nagymaros.gpx",
+      "date": "2021-10-09",
+      "year": 2021,
+      "month": 10,
+      "distanceKm": 16.36031342948555,
+      "elevationGainM": 593
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.10.20 Solymár - Piliscsaba.gpx",
+      "date": "2021-10-20",
+      "year": 2021,
+      "month": 10,
+      "distanceKm": 16.966029101191037,
+      "elevationGainM": 445
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2021.10.27 Cserhátsurány - Szandaváralja.gpx",
+      "date": "2021-10-27",
+      "year": 2021,
+      "month": 10,
+      "distanceKm": 10.15224094285053,
+      "elevationGainM": 270
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.02.11 Piliscsév - Klastrompuszta - Dorog.gpx",
+      "date": "2022-02-11",
+      "year": 2022,
+      "month": 2,
+      "distanceKm": 21.152181548682158,
+      "elevationGainM": 760.0001754760742
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.03.13 Dorog - Péliföldszentkereszt.gpx",
+      "date": "2022-03-13",
+      "year": 2022,
+      "month": 3,
+      "distanceKm": 23.221478241229185,
+      "elevationGainM": 1106.1999435424805
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.04.13 Péliföldszentkereszt - Bajót.gpx",
+      "date": "2022-04-13",
+      "year": 2022,
+      "month": 4,
+      "distanceKm": 25.140957404502938,
+      "elevationGainM": 891.7998962402344
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.05.28 Tardos - Koldusszállás.gpx",
+      "date": "2022-05-28",
+      "year": 2022,
+      "month": 5,
+      "distanceKm": 16.331952092874566,
+      "elevationGainM": 382.199951171875
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.07.09 Koldusszállás - Szárliget.gpx",
+      "date": "2022-07-09",
+      "year": 2022,
+      "month": 7,
+      "distanceKm": 24.18394783117533,
+      "elevationGainM": 744.3997344970703
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.08.04 Szárliget - Várgesztes.gpx",
+      "date": "2022-08-04",
+      "year": 2022,
+      "month": 8,
+      "distanceKm": 18.956860884196434,
+      "elevationGainM": 696.0001220703125
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.08.10 Várgesztes - Gánt.gpx",
+      "date": "2022-08-10",
+      "year": 2022,
+      "month": 8,
+      "distanceKm": 21.196556021357285,
+      "elevationGainM": 609.2000885009766
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.09.10 Gánt - Bodajk.gpx",
+      "date": "2022-09-10",
+      "year": 2022,
+      "month": 9,
+      "distanceKm": 24.165607651179155,
+      "elevationGainM": 551.4000854492188
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.10.08 Bodajk - Bakonykúti.gpx",
+      "date": "2022-10-08",
+      "year": 2022,
+      "month": 10,
+      "distanceKm": 22.31042329943553,
+      "elevationGainM": 768.6000213623047
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2022.11.18 Bakonykúti - Kisgyón.gpx",
+      "date": "2022-11-18",
+      "year": 2022,
+      "month": 11,
+      "distanceKm": 15.630434746264225,
+      "elevationGainM": 335.40003967285156
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.03.18 Kisgyón - Jásd.gpx",
+      "date": "2023-03-18",
+      "year": 2023,
+      "month": 3,
+      "distanceKm": 16.41824670299403,
+      "elevationGainM": 536.9999847412109
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.05.27 Jásd - Zirc.gpx",
+      "date": "2023-05-27",
+      "year": 2023,
+      "month": 5,
+      "distanceKm": 19.49368950740612,
+      "elevationGainM": 624.7994537353516
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.07.15 Zirc - Bakonybél.gpx",
+      "date": "2023-07-15",
+      "year": 2023,
+      "month": 7,
+      "distanceKm": 23.324937092175855,
+      "elevationGainM": 872.2002258300781
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.07.16 Bakonybél - Városlőd.gpx",
+      "date": "2023-07-16",
+      "year": 2023,
+      "month": 7,
+      "distanceKm": 20.678876547486436,
+      "elevationGainM": 572.39990234375
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.09.03 Városlőd - Nagyvázsony.gpx",
+      "date": "2023-09-03",
+      "year": 2023,
+      "month": 9,
+      "distanceKm": 28.28006700618994,
+      "elevationGainM": 754.3999786376953
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2023.12.09 Nagyvázsony - Szentbékkálla.gpx",
+      "date": "2023-12-09",
+      "year": 2023,
+      "month": 12,
+      "distanceKm": 25.199645905089472,
+      "elevationGainM": 659.1999664306641
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.01.27 Szentbékkálla - Káptalantóti.gpx",
+      "date": "2024-01-27",
+      "year": 2024,
+      "month": 1,
+      "distanceKm": 14.817222417304864,
+      "elevationGainM": 596.8000259399414
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.03.29 Káptalantóti - Badacsonytördemic.gpx",
+      "date": "2024-03-29",
+      "year": 2024,
+      "month": 3,
+      "distanceKm": 14.139426643489198,
+      "elevationGainM": 781.4002227783203
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.07.10 Badacsonytördemic - Tapolca.gpx",
+      "date": "2024-07-10",
+      "year": 2024,
+      "month": 7,
+      "distanceKm": 17.597890039525982,
+      "elevationGainM": 543.7999725341797
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.07.11 Tapolca - Gyenesdiás.gpx",
+      "date": "2024-07-11",
+      "year": 2024,
+      "month": 7,
+      "distanceKm": 28.416954878410166,
+      "elevationGainM": 730.0001449584961
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.07.24 Keszthely - Rezi.gpx",
+      "date": "2024-07-24",
+      "year": 2024,
+      "month": 7,
+      "distanceKm": 18.087921205331348,
+      "elevationGainM": 445.0000991821289
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.10.26 Rezi - Zalaszantó.gpx",
+      "date": "2024-10-26",
+      "year": 2024,
+      "month": 10,
+      "distanceKm": 10.601259600016894,
+      "elevationGainM": 307.59999084472656
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2024.12.14 Zalaszántó - Tátika.gpx",
+      "date": "2024-12-14",
+      "year": 2024,
+      "month": 12,
+      "distanceKm": 15.548830246167144,
+      "elevationGainM": 447.80006408691406
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2025.03.01 Tátika - Sümeg.gpx",
+      "date": "2025-03-01",
+      "year": 2025,
+      "month": 3,
+      "distanceKm": 15.721272828643208,
+      "elevationGainM": 257.20001220703125
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.01.31 Szajki tavak - Kisvásárhely.gpx",
+      "date": "2026-01-31",
+      "year": 2026,
+      "month": 1,
+      "distanceKm": 24.43911132653338,
+      "elevationGainM": 217.19981384277344
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.02.01 Kisvásárhely - Sümeg.gpx",
+      "date": "2026-02-01",
+      "year": 2026,
+      "month": 2,
+      "distanceKm": 12.341359876455035,
+      "elevationGainM": 179.8001251220703
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.07.23 Szajki tavak - Káld.gpx",
+      "date": "2026-07-23",
+      "year": 2026,
+      "month": 7,
+      "distanceKm": 17.85783241101838,
+      "elevationGainM": 207.19993591308594
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.07.24 Káld - Sárvár.gpx",
+      "date": "2026-07-24",
+      "year": 2026,
+      "month": 7,
+      "distanceKm": 27.29681001563672,
+      "elevationGainM": 739.4002532958984
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.07.25 Sárvár - Csényeújmajor.gpx",
+      "date": "2026-07-25",
+      "year": 2026,
+      "month": 7,
+      "distanceKm": 11.422993735253046,
+      "elevationGainM": 108.65003356933596
+    },
+    {
+      "movement": "Pest Megyei Piros (PMP)",
+      "filename": "2024.04.20 Verőce - Katalinpuszta.gpx",
+      "date": "2024-04-20",
+      "year": 2024,
+      "month": 4,
+      "distanceKm": 10.254229537830675,
+      "elevationGainM": 367.40008544921875
+    },
+    {
+      "movement": "Pest Megyei Piros (PMP)",
+      "filename": "2024.08.10 Kosd - Szendehely.gpx",
+      "date": "2024-08-10",
+      "year": 2024,
+      "month": 8,
+      "distanceKm": 13.364593199091598,
+      "elevationGainM": 388.40016174316406
+    },
+    {
+      "movement": "Pest Megyei Piros (PMP)",
+      "filename": "2024.09.07 Kosd - Rád.gpx",
+      "date": "2024-09-07",
+      "year": 2024,
+      "month": 9,
+      "distanceKm": 4.74957195255709,
+      "elevationGainM": 137.1999969482422
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2024.03.16 Visegrád - Pilisszentlászló (Visegrádi Pirosút).gpx",
+      "date": "2024-03-16",
+      "year": 2024,
+      "month": 3,
+      "distanceKm": 9.81789105595608,
+      "elevationGainM": 427.400146484375
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2024.05.11 Pilisszentlászló - Leányfalu (Visegrádi Pirosút).gpx",
+      "date": "2024-05-11",
+      "year": 2024,
+      "month": 5,
+      "distanceKm": 12.407314781794799,
+      "elevationGainM": 421.7999038696289
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2025.05.31 Dorog - Pilisszentlélek.gpx",
+      "date": "2025-05-31",
+      "year": 2025,
+      "month": 5,
+      "distanceKm": 19.039643168498078,
+      "elevationGainM": 726.1995849609375
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2025.07.18 Piliscsev - Piliscsaba.gpx",
+      "date": "2025-07-18",
+      "year": 2025,
+      "month": 7,
+      "distanceKm": 20.259705182805714,
+      "elevationGainM": 782.5999298095703
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2025.07.19 Piliscsaba - Pilisszántó.gpx",
+      "date": "2025-07-19",
+      "year": 2025,
+      "month": 7,
+      "distanceKm": 18.62199803379469,
+      "elevationGainM": 628.1996307373047
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2025.09.20 Pilisszentlelek - Pilisjaszfalu.gpx",
+      "date": "2025-09-20",
+      "year": 2025,
+      "month": 9,
+      "distanceKm": 16.615227179938476,
+      "elevationGainM": 632.9999694824219
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2025.10.25 Pilisszanto - Pilisszentkereszt.gpx",
+      "date": "2025-10-25",
+      "year": 2025,
+      "month": 10,
+      "distanceKm": 16.36828831108969,
+      "elevationGainM": 778.2003173828125
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2026.04.09 Pilisszentkereszt - Csobánka.gpx",
+      "date": "2026-04-09",
+      "year": 2026,
+      "month": 4,
+      "distanceKm": 21.220234362272407,
+      "elevationGainM": 772.5999450683594
+    },
+    {
+      "movement": "Pilis",
+      "filename": "2026.06.14 Csobánka - Szentendre.gpx",
+      "date": "2026-06-14",
+      "year": 2026,
+      "month": 6,
+      "distanceKm": 20.7127792890332,
+      "elevationGainM": 692.3995590209961
+    }
+  ]
+}
