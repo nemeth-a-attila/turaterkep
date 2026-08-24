@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T13:31:10.567Z",
+  "generatedAt": "2026-08-24T13:34:50.382Z",
   "tracks": [
     {
       "movement": "Balaton-felvidéki Kéktúra (BFK)",
@@ -558,6 +558,15 @@
       "month": 7,
       "distanceKm": 11.422993735253046,
       "elevationGainM": 108.65003356933596
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.08.22 Csényeújmajor - Szeleste.gpx",
+      "date": "2026-08-22",
+      "year": 2026,
+      "month": 8,
+      "distanceKm": 21.528956771692233,
+      "elevationGainM": 212
     },
     {
       "movement": "Pest Megyei Piros (PMP)",
