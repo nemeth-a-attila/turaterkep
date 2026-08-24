@@ -1,7 +1,7 @@
 const map = L.map("map", {
     zoomSnap: 0.01,
     zoomDelta: 0.25,
-    wheelPxPerZoomLevel: 180
+    wheelPxPerZoomLevel: 120
 }).setView(
     [47.2, 19.5],
     8
