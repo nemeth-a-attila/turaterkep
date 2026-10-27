@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T19:39:43.149Z",
+  "generatedAt": "2026-10-27T12:47:54.478Z",
   "tracks": [
     {
       "movement": "Balaton-felvidéki Kéktúra (BFK)",
@@ -135,6 +135,24 @@
       "month": 10,
       "distanceKm": 9.083566108887542,
       "elevationGainM": 550.4002304077148
+    },
+    {
+      "movement": "Egyéb",
+      "filename": "2026.01.24 Normafa - Gazdagrét.gpx",
+      "date": "2026-01-24",
+      "year": 2026,
+      "month": 1,
+      "distanceKm": 6.647434143473163,
+      "elevationGainM": 35
+    },
+    {
+      "movement": "Egyéb",
+      "filename": "2026.10.25 Normafa - Gazdagrét.gpx",
+      "date": "2026-10-25",
+      "year": 2026,
+      "month": 10,
+      "distanceKm": 6.760683614302732,
+      "elevationGainM": 130.00001525878906
     },
     {
       "movement": "Országos Kéktúra (OKT)",
