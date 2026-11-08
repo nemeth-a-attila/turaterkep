@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T12:47:54.478Z",
+  "generatedAt": "2026-11-08T08:40:39.664Z",
   "tracks": [
     {
       "movement": "Balaton-felvidéki Kéktúra (BFK)",
@@ -594,6 +594,15 @@
       "month": 8,
       "distanceKm": 21.528956771692233,
       "elevationGainM": 212
+    },
+    {
+      "movement": "Országos Kéktúra (OKT)",
+      "filename": "2026.11.07 Szeleste - Tömörd.gpx",
+      "date": "2026-11-07",
+      "year": 2026,
+      "month": 11,
+      "distanceKm": 23.356059044891726,
+      "elevationGainM": 370.1999969482422
     },
     {
       "movement": "Pest Megyei Piros (PMP)",
