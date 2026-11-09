@@ -11,6 +11,23 @@ const mapTracks = await loadMapTracks();
         completed: { ...defaultLineStyles.completed, ...storedLineStyles.completed }
     };
     const routeLayers = { planned: [], completed: [] };
+    const movementCodes = {
+        'Balaton-felvidéki Kéktúra': 'BFK', 'Budai Zöld': 'BZ', 'Dornyai Béla Emlékút': 'DBE',
+        'Dél-Dunántúli Piros': 'DDP', 'Gödöllői Kéktúra': 'GK', 'Három forrás útja a Pilisben': '3F',
+        'Kerüld a Pilist': 'KaP', 'Közép-Dunántúli Piros': 'KDP', 'Országos Kéktúra': 'OKT',
+        'Pest megyei Piros': 'PMP', 'Pilis CsipaPiros': 'PCsP', 'Pilisi vándorlás': 'PV',
+        'Rockenbauer Pál Dél-Dunántúli Kéktúra': 'RPDDK', 'Rómer Flóris Emlékút': 'RFE', 'Visegrádi Pirosút': 'VP'
+    };
+    const movementCodeFor = movement => {
+        const normalized = movement.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('hu-HU');
+        return Object.entries(movementCodes).find(([name]) => {
+            const candidate = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('hu-HU');
+            return normalized.startsWith(candidate);
+        })?.[1];
+    };
+    const initialUrl = new URLSearchParams(location.search);
+    const urlStatePresent = ['base', 'signs', 'planned', 'completed'].some(key => initialUrl.has(key));
+    const baseLayers = {};
 
     //
     // ALAPTÉRKÉPEK
@@ -53,6 +70,8 @@ const mapTracks = await loadMapTracks();
         )
         : null;
 
+    Object.assign(baseLayers, { freemap, mapy, mapnik, openTopoMap, satellite });
+    if (thunderforest) baseLayers.thunderforest = thunderforest;
     freemap.addTo(map);
     map.freemapLayer = freemap;
 
@@ -100,6 +119,7 @@ const mapTracks = await loadMapTracks();
 
         plannedChildren.push({
             label: track.properties.filename.replace(".gpx", ""),
+            shareCode: Object.entries(movementCodes).find(([name]) => track.properties.filename.startsWith(name))?.[1],
             layer: gpxLayer
         });
     }
@@ -142,6 +162,8 @@ const mapTracks = await loadMapTracks();
 
         completedChildren.push({
             label: movementName,
+            shareCode: movementCodeFor(movementName),
+            shareKey: movementCodeFor(movementName) || movementName,
             selectAllCheckbox: true,
             children: trackNodes
         });
@@ -225,6 +247,64 @@ const mapTracks = await loadMapTracks();
     );
 
 treeControl.addTo(map);
+
+    const plannedEntries = plannedChildren.filter(node => node.shareCode);
+    const completedEntries = completedChildren;
+    const allCompletedLayers = completedChildren.flatMap(node => node.children.map(child => child.layer));
+    const allPlannedLayers = plannedChildren.map(node => node.layer);
+    const signLayers = { turistautak, waymarked };
+    const applyUrlState = () => {
+        if (initialUrl.has('base')) {
+            Object.values(baseLayers).forEach(layer => map.removeLayer(layer));
+            const selected = baseLayers[initialUrl.get('base')];
+            if (selected) map.addLayer(selected);
+        }
+        if (initialUrl.has('signs')) {
+            Object.values(signLayers).forEach(layer => map.removeLayer(layer));
+            const value = initialUrl.get('signs');
+            if (value === 'b' || value === 't') map.addLayer(turistautak);
+            if (value === 'b' || value === 'w') map.addLayer(waymarked);
+        }
+        if (initialUrl.has('planned')) {
+            allPlannedLayers.forEach(layer => map.removeLayer(layer));
+            const codes = new Set(initialUrl.get('planned').split(',').filter(Boolean));
+            plannedEntries.filter(node => codes.has(node.shareCode)).forEach(node => map.addLayer(node.layer));
+        }
+        if (initialUrl.has('completed')) {
+            allCompletedLayers.forEach(layer => map.removeLayer(layer));
+            const codes = new Set(initialUrl.get('completed').split(',').filter(Boolean));
+            completedEntries.filter(node => codes.has(node.shareKey)).forEach(node => node.children.forEach(child => map.addLayer(child.layer)));
+        }
+    };
+    if (urlStatePresent) applyUrlState();
+
+    const currentShareUrl = () => {
+        const params = new URLSearchParams();
+        const activeBase = Object.entries(baseLayers).find(([, layer]) => map.hasLayer(layer))?.[0] || 'freemap';
+        params.set('base', activeBase);
+        const activeSigns = Object.entries(signLayers).filter(([, layer]) => map.hasLayer(layer)).map(([key]) => key === 'turistautak' ? 't' : 'w');
+        params.set('signs', activeSigns.length === 2 ? 'b' : activeSigns[0] || 'none');
+        params.set('planned', plannedEntries.filter(node => map.hasLayer(node.layer)).map(node => node.shareCode).join(','));
+        params.set('completed', completedEntries.filter(node => node.children.some(child => map.hasLayer(child.layer))).map(node => node.shareKey).join(','));
+        return `${location.origin}${location.pathname}?${params}`;
+    };
+    const syncUrl = () => history.replaceState(null, '', currentShareUrl());
+    map.on('baselayerchange overlayadd overlayremove', syncUrl);
+    const shareControl = L.control({ position: 'topright' });
+    shareControl.onAdd = () => {
+        const container = L.DomUtil.create('div', 'leaflet-bar');
+        const button = L.DomUtil.create('button', '', container);
+        button.type = 'button'; button.textContent = 'URL megosztása';
+        button.title = 'A jelenlegi térképállapotot tartalmazó URL másolása';
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.on(button, 'click', async () => {
+            try { await navigator.clipboard.writeText(currentShareUrl()); button.textContent = 'URL másolva'; }
+            catch { prompt('Másold ki a megosztható URL-t:', currentShareUrl()); }
+            setTimeout(() => { button.textContent = 'URL megosztása'; }, 1800);
+        });
+        return container;
+    };
+    shareControl.addTo(map);
 
     const lineStyleControl = L.control({ position: 'topright' });
     lineStyleControl.onAdd = () => {
