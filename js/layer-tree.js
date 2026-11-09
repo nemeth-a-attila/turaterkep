@@ -270,9 +270,9 @@ treeControl.addTo(map);
             const codes = new Set(initialUrl.get('planned').split(',').filter(Boolean));
             plannedEntries.filter(node => codes.has(node.shareCode)).forEach(node => map.addLayer(node.layer));
         }
-        if (initialUrl.has('completed')) {
+        if (urlStatePresent) {
             allCompletedLayers.forEach(layer => map.removeLayer(layer));
-            const codes = new Set(initialUrl.get('completed').split(',').filter(Boolean));
+            const codes = new Set((initialUrl.get('completed') || '').split(',').filter(Boolean));
             completedEntries.filter(node => codes.has(node.shareKey)).forEach(node => node.children.forEach(child => map.addLayer(child.layer)));
         }
     };
@@ -361,7 +361,9 @@ treeControl.addTo(map);
     // TELJESÍTETT TÚRÁK AUTOMATIKUS BEKAPCSOLÁSA
     //
 
-    for (const layer of defaultLayers) {
-        map.addLayer(layer);
+    if (!urlStatePresent) {
+        for (const layer of defaultLayers) {
+            map.addLayer(layer);
+        }
     }
 }
