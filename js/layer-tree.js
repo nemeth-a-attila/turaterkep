@@ -11,6 +11,7 @@ const mapTracks = await loadMapTracks();
         completed: { ...defaultLineStyles.completed, ...storedLineStyles.completed }
     };
     const routeLayers = { planned: [], completed: [] };
+    const routeFeatures = [];
     const movementCodes = {
         'Balaton-felvidéki Kéktúra': 'BFK', 'Budai Zöld': 'BZ', 'Dornyai Béla Emlékút': 'DBE',
         'Dél-Dunántúli Piros': 'DDP', 'Gödöllői Kéktúra': 'GK', 'Három forrás útja a Pilisben': '3F',
@@ -116,6 +117,7 @@ const mapTracks = await loadMapTracks();
         );
 
         routeLayers.planned.push(gpxLayer);
+        routeFeatures.push({ layer: gpxLayer, track });
 
         plannedChildren.push({
             label: track.properties.filename.replace(".gpx", ""),
@@ -150,6 +152,7 @@ const mapTracks = await loadMapTracks();
             );
 
             routeLayers.completed.push(gpxLayer);
+            routeFeatures.push({ layer: gpxLayer, track });
 
             // induláskor látszódjon
             defaultLayers.push(gpxLayer);
@@ -305,6 +308,54 @@ treeControl.addTo(map);
         return container;
     };
     shareControl.addTo(map);
+
+    const xmlEscape = value => String(value).replace(/[<>&"']/g, character => ({
+        '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;'
+    })[character]);
+    const coordinatesToTrackPoints = coordinates => coordinates.map(([longitude, latitude, elevation]) =>
+        `      <trkpt lat="${latitude}" lon="${longitude}">${Number.isFinite(elevation) ? `<ele>${elevation}</ele>` : ''}</trkpt>`
+    ).join('\n');
+    const featureToGpxTrack = ({ track }) => {
+        const name = track.properties.filename.replace(/\.gpx$/i, '');
+        const segments = track.geometry.type === 'LineString'
+            ? [track.geometry.coordinates]
+            : track.geometry.type === 'MultiLineString' ? track.geometry.coordinates : [];
+        const trackSegments = segments.filter(segment => segment.length).map(segment =>
+            `    <trkseg>\n${coordinatesToTrackPoints(segment)}\n    </trkseg>`
+        ).join('\n');
+        return trackSegments ? `  <trk>\n    <name>${xmlEscape(name)}</name>\n${trackSegments}\n  </trk>` : '';
+    };
+    const exportControl = L.control({ position: 'topleft' });
+    exportControl.onAdd = () => {
+        const container = L.DomUtil.create('div', 'leaflet-bar gpx-export-control');
+        const button = L.DomUtil.create('button', '', container);
+        button.type = 'button';
+        button.textContent = 'GPX letöltése';
+        button.title = 'A térképen látható útvonalak letöltése egy GPX-fájlban';
+        button.setAttribute('aria-label', button.title);
+        const updateButton = () => {
+            const count = routeFeatures.filter(({ layer }) => map.hasLayer(layer)).length;
+            button.disabled = count === 0;
+            button.title = count ? `${count} látható útvonal letöltése egy GPX-fájlban` : 'Nincs kijelölt útvonal';
+        };
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.on(button, 'click', () => {
+            const tracks = routeFeatures.filter(({ layer }) => map.hasLayer(layer)).map(featureToGpxTrack).filter(Boolean);
+            if (!tracks.length) return;
+            const gpx = `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Túratérkép" xmlns="http://www.topografix.com/GPX/1/1">\n${tracks.join('\n')}\n</gpx>`;
+            const blob = new Blob([gpx], { type: 'application/gpx+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'turaterkep-kijelolt-utvonalak.gpx';
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
+        map.on('layeradd layerremove', updateButton);
+        updateButton();
+        return container;
+    };
+    exportControl.addTo(map);
 
     const lineStyleControl = L.control({ position: 'topright' });
     lineStyleControl.onAdd = () => {

@@ -84,6 +84,19 @@ body {
 
 .screenshot-control button:hover { background: #f2f7f3; }
 .screenshot-control button:disabled { cursor: wait; color: #69756f; }
+.gpx-export-control button {
+    display: block;
+    height: 30px;
+    padding: 0 9px;
+    border: 0;
+    background: #fff;
+    color: #1c3529;
+    cursor: pointer;
+    font: 600 13px system-ui, sans-serif;
+    white-space: nowrap;
+}
+.gpx-export-control button:hover { background: #f2f7f3; }
+.gpx-export-control button:disabled { cursor: default; color: #69756f; }
 .taking-map-screenshot .leaflet-control-container,
 .taking-map-screenshot .statistics-link { visibility: hidden; }
 .precise-zoom-control {
